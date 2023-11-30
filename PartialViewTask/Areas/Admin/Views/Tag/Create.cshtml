@@ -1,0 +1,17 @@
+﻿@using PartialViewTask.Models;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model TagModel
+
+<form asp-action="Create" asp-controller="Tag" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Name"  class="form-label"></label>
+        <input asp-for="Name"  class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+

@@ -1,0 +1,82 @@
+﻿@using PartialViewTask.Models;
+@model List<BookModel>;
+
+
+ @section Scripts{
+
+    <script>
+        function deleteAction(id) {
+   
+            result = confirm("Item is deleting!")
+
+            if(result === false){
+                return
+            }
+
+            $.ajax({
+                url: "/Admin/Book/Delete/" + id,
+                type: "DELETE",
+                success: () => {
+                    alert("Deleted!")
+                    window.location.reload()
+                },
+                error: () => {
+                    alert("Something bad happened")
+                }
+            })
+
+
+        }
+     
+    </script>
+
+
+
+    }
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">TITLE</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">SALE FRACTION</th>
+            <th scope="col">IS FEATURED</th>
+            <th scope="col">IS NEW ARRIVEL</th>
+            <th scope="col">IS MOST VIEWED</th>
+            <th scope="col">TAGS</th>
+            <th scope="col">ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(BookModel model_ in Model)
+        {
+            <tr>
+                <td>@model_.Id</td>
+                <td>@model_.Title</td>
+                <td>@model_.Price</td>
+                <td>@model_.SaleFraction</td>
+                <td>@model_.IsFeatured</td>
+                <td>@model_.IsNewArrival</td>
+                <td>@model_.IsMostViewed</td>
+                <td>
+                    @foreach (TagModel tag in model_.Tags.ToList())
+                    {
+                        <span>@tag.Name</span>
+                    }
+
+                </td>
+                <td>
+                    <button class="btn btn-warning">UPDATE</button>
+                    <button onClick="deleteAction(@model_.Id)" class="btn btn-danger">DELETE</button>
+                </td>
+
+
+            </tr>
+        }
+       
+      
+    </tbody>
+</table>
+      

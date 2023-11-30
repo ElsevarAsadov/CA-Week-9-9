@@ -1,0 +1,89 @@
+﻿@model BookModel
+
+@using PartialViewTask
+@using PartialViewTask.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form asp-action="Create" asp-controller="Book" method="Post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title"  class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SaleFraction" class="form-label"></label>
+        <input asp-for="SaleFraction" class="form-control" />
+        <span asp-validation-for="SaleFraction" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="IsFeatured" class="form-label"></label>
+        <input asp-for="IsFeatured" class="form-control" />
+        <span asp-validation-for="IsFeatured" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="IsNewArrival" class="form-label"></label>
+        <input asp-for="IsNewArrival" class="form-control" />
+        <span asp-validation-for="IsNewArrival" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="IsMostViewed" class="form-label"></label>
+        <input asp-for="IsMostViewed" class="form-control" />
+        <span asp-validation-for="IsMostViewed" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TagIds" class="form-label"></label>
+        <select asp-for="TagIds">
+
+            @foreach(TagModel tag in ViewBag.Tags)
+            {
+                <option value="@tag.Id" >@tag.Name</option>
+            }
+        </select>
+        <span asp-validation-for="TagIds" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="UpdatedImages" class="form-label"></label>
+        <input asp-for="UpdatedImages" class="form-control" />
+        <span asp-validation-for="UpdatedImages" class="text-danger"></span>
+    </div>
+
+
+
+    <div class="mb-3">
+        <label asp-for="UpdatedSlideImage" class="form-label"></label>
+        <input asp-for="UpdatedSlideImage" class="form-control" />
+        <span asp-validation-for="UpdatedSlideImage" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="UpdatedHoverImage" class="form-label"></label>
+        <input asp-for="UpdatedHoverImage" class="form-control" />
+        <span asp-validation-for="UpdatedHoverImage" class="text-danger"></span>
+    </div>
+
+    
+
+
+
+
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

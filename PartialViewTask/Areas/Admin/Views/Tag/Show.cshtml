@@ -1,0 +1,56 @@
+﻿@using PartialViewTask.Models;
+@model List<TagModel>
+
+    @section Scripts{
+        <script>
+            
+            function deleteTag(id) {
+                confirmed = confirm("Are u sure ?")
+
+                if (confirmed === false) return;
+
+            $.ajax({
+                url: "/Admin/Tag/Delete/" + id,
+                type: "DELETE",
+                success: () => {
+                    alert("Deleted !")
+                    window.location.reload()
+                },
+                error: ()=>{
+                    alert("Something bad happened X(")
+                }
+            })
+            }
+            
+
+
+        </script>
+    }
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">ACTIONS</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(TagModel tag in Model)
+        {
+            <tr>
+                <th scope="row">@tag.Id</th>
+                <td>@tag.Name</td>
+                <td>
+                    <button class="btn btn-warning">UPDATE</button>
+                    <button class="btn btn-danger" onclick="deleteTag(@tag.Id)">DELETE</button>
+                </td>
+
+            </tr>
+        }
+     
+     
+    </tbody>
+</table>
+
