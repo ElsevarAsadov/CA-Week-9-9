@@ -96,6 +96,26 @@ namespace PartialViewTask.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("PartialViewTask.Models.Slider", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sliders");
+                });
+
             modelBuilder.Entity("PartialViewTask.Models.TagModel", b =>
                 {
                     b.Property<int>("Id")

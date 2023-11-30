@@ -7,7 +7,7 @@
 
             string filename = $"{Guid.NewGuid().ToString()}.{new FileInfo(image.FileName).Extension}";
 
-            FileStream stream = new FileStream("C:\\Users\\Es\\source\\repos\\HomeWork\\PartialViewTask\\PartialViewTask\\wwwroot\\" + filename, FileMode.Create);
+            FileStream stream = new FileStream("C:\\Users\\Surface\\Desktop\\CA-Week-9-9\\PartialViewTask\\wwwroot\\" + filename, FileMode.Create);
 
 
             image.CopyTo(stream);
@@ -19,7 +19,7 @@
         {
             try
             {
-                File.Delete("C:\\Users\\Es\\source\\repos\\HomeWork\\PartialViewTask\\PartialViewTask\\wwwroot\\" + filename);
+                File.Delete("C:\\Users\\Surface\\Desktop\\CA-Week-9-9\\PartialViewTask\\wwwroot\\" + filename);
             }
             catch(Exception e)
             {

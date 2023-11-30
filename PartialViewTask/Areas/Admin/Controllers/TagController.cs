@@ -25,22 +25,16 @@ namespace PartialViewTask.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TagModel oldTag)
+        public IActionResult Create(TagModel newTag)
         {
-            if(oldTag is null)
+            if(newTag is null)
             {
 
                 return BadRequest();
 
             }
 
-            TagModel newTag = _context.Tags.FirstOrDefault(x=>x.Id == oldTag.Id);
-
-            if(newTag is null)
-            {
-                return View("Index");
-            }
-
+           
 
             if (ModelState.IsValid)
             {

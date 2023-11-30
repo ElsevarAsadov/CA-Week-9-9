@@ -1,0 +1,57 @@
+﻿@using PartialViewTask.Models;
+@model List<Slider>
+
+@section Scripts{
+    <script>
+
+        function deleteSlider(id) {
+            confirmed = confirm("Are u sure ?")
+
+            if (confirmed === false) return;
+
+            $.ajax({
+                url: "/Admin/Slider/Delete/" + id,
+                type: "DELETE",
+                success: () => {
+                    alert("Deleted !")
+                    window.location.reload()
+                },
+                error: () => {
+                    alert("Something bad happened X(")
+                }
+            })
+        }
+
+
+
+    </script>
+    }
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">TEXT</th>
+            <th scope="col">IMAGE</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Slider slider in Model)
+        {
+            <tr>
+                <th scope="row">@slider.Id</th>
+                <td>@slider.Text</td>
+                <td>@slider.Image</td>
+                <td>
+                    <button class="btn btn-warning">UPDATE</button>
+                    <button class="btn btn-danger" onclick="deleteSlider(@slider.Id)">DELETE</button>
+                </td>
+
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
